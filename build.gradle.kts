@@ -29,6 +29,14 @@ repositories {
     // IntelliJ Platform Gradle Plugin Repositories Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-repositories-extension.html
     intellijPlatform {
         defaultRepositories()
+
+        customPluginRepository("https://tbe.labs.jb.gg/api/plugin-repository?channel=Stable") {
+            credentials(HttpHeaderCredentials::class.java) {
+                name = "Authorization"
+                value = "Automation amFrdWJ...NwZjA="
+            }
+        }
+
     }
 }
 
@@ -49,6 +57,8 @@ dependencies {
         instrumentationTools()
         pluginVerifier()
         testFramework(TestFrameworkType.Platform.JUnit4)
+
+        plugin("com.intellij.ml.llm.template:0.2.1")
     }
 }
 
